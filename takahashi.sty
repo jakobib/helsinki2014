@@ -2,6 +2,7 @@
 \ProvidesPackage{takahashi}[2013/06/25 Takahashi method for beamer]
 
 %   Copyright (c) 2008-2013, Chung-chieh Shan.
+%   Command \taka and takastack added by Jakob Voß for use in Pandoc
 
 %   This program is free software; you can redistribute it and/or modify
 %   it under the terms of the GNU General Public License as published by
@@ -31,6 +32,15 @@
     \aftergroup\aftergroup\aftergroup\beamer@takahashi
     \resizebox\hsize!{#2}%
   \end{frame}%
+}
+
+% takes a single argument
+\newcommand<>{\taka}[1]{%
+  \aftergroup\aftergroup\aftergroup\beamer@takahashi
+  \resizebox\hsize!{#1}%
+}
+\newcommand<>{\takastack}[1]{%
+  \taka{\begin{tabular}{@{}c@{}}#1\end{tabular}}
 }
 
 % Define \takahashi@shrinkframebox, a variant of \beamer@shrinkframebox
