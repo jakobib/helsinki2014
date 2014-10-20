@@ -6,7 +6,8 @@ date: October 22th, 2014 (#kivepa2014)
 fontsize: 14pt
 header-includes:
     - '\usepackage{takahashi}'
-    - '\usepackage{caption}\captionsetup{skip=0pt,aboveskip=0pt}'
+    - '\usepackage{caption}'
+    - '\captionsetup{skip=0pt,aboveskip=5pt,labelformat=empty}'
     - '\setbeamerfont{caption}{size=\scriptsize}'
     - '\setbeamertemplate{caption}{\raggedright\insertcaption\par}'
     - '\setbeamertemplate{navigation symbols}{}'
@@ -147,7 +148,9 @@ good...
 
 ---
 
-Sounds nice...
+# Linked Open Data (LOD)
+
+sounds nice...
 
 * encoding of information as data
 * worldwide connections
@@ -157,19 +160,38 @@ Sounds nice...
 
 ---
 
-\takastack{History}
-once again
+\takastack{a little theory of data}
 
 ---
 
+# Data
+
+* all data refers to something
+
+. . .
+
+* some data refer to the same thing
+
+. . .
+
+* for instance the same person
+    * as author in a library catalog
+    * in a university research management system
+    * Wikipedia article about the person
+    * ...
+
 # "Old School" Library Linked Data
 
-Authority files
+authority files
   : registry, classification, thesaurus...
 controlled vocabularies
   : no homonyms/synonyms
 identifier
   : notations, codes, numbers...
+
+. . .
+
+same identifier $\Rightarrow$ data refers to the same thing
 
 ---
 
@@ -177,51 +199,262 @@ identifier
 
 ---
 
-\taka{``things, not strings''}
+\taka{an example}
 
 ---
 
-\takastack{Present}
-here we are
+![&nbsp;](anonymous.png)
 
 ---
 
-A lot of connections between data
-
-* Hier: **Daten** die mit anderen Daten zusammenhängen
-* Linked Open Data
-
-# Daten die mit anderen Daten zusammenhängen
-
-* Verschiedene Daten beschreiben die gleiche Dinge
-
-* Zum Beispiele **die gleiche Person**
-    * Person als Autor in Katalogdatenbank
-    * Objekte der Person im Bestandsverzeichnis eines Museums
-    * Wikipedia-Artikel über die Person
-    * ...
-
-
-# Henriette Avram
-
-* http://viaf.org/viaf/18236820
-* http://d-nb.info/gnd/127119507
-* https://www.wikidata.org/wiki/Q10953
-* ...
-
-The MARC pilot project (1968)
-
-* http://d-nb.info/577273116
-* http://www.worldcat.org/oclc/721117733
+![Karl Marx](anonymous.png)
 
 ---
 
+![Karl Marx (German artist, 1929-2008)](anonymous.png)
+
 ---
 
-\bigfont
+unique identification of things
 
-* **not** "somehow" connected
-* **but** connected in a defined way
+* "author:"\
+   <http://d-nb.info/gnd/118578545>
+
+---
+
+\text{unique identification of things \onslide<2> and connections\onslide<1->}
+
+* **object:**\
+  <http://d-nb.info/gnd/118578545>\
+  ("Karl Marx, the artists")
+
+. . .
+
+* **property:**\
+  <http://purl.org/dc/terms/creator>\
+  ("authorship, as defined by Dublin Core")
+
+---
+
+# Ei kaksi kolmannetta
+
+* **subject:**\
+  <http://d-nb.info/940697734>\
+  ("a specific book with paintings")
+* **property:**\
+  <http://purl.org/dc/terms/creator>\
+  ("authorship, as defined by Dublin Core")
+* **object:**\
+  <http://d-nb.info/gnd/118578545>\
+  ("Karl Marx, the artists")
+
+. . .
+
+*hey, that's an RDF triple!*
+
+---
+
+\taka{technical break}
+
+---
+
+# An RDF triple (N-Triples syntax)
+
+    <http://d-nb.info/940697734>
+    <http://purl.org/dc/terms/creator>
+    <http://d-nb.info/gnd/118578545> .
+
+# An RDF triple (Turtle syntax)
+
+    @prefix dct: <http://purl.org/dc/terms/> .
+
+    <http://d-nb.info/940697734>
+    dc:creator 
+    <http://d-nb.info/gnd/118578545> .
+
+# An RDF triple (aREF syntax)
+
+    http://d-nb.info/940697734:
+      dc_creator:
+        http://d-nb.info/gnd/118578545
+
+. . .
+
+*RDF syntax converters exist.*
+
+. . .
+
+*always use the RDF syntax you understand best!*
+
+. . .
+
+*(nobody understands RDF/XML syntax)*
+
+# Multiple RDF triples (Turtle syntax)
+
+    @prefix dct: <http://purl.org/dc/terms/> .
+    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+    <http://d-nb.info/940697734>
+    dct:title "Gemälde" ;
+    dct:creator <http://d-nb.info/gnd/118578545> .
+
+    <http://d-nb.info/gnd/118578545>
+    foaf:name "Karl Marx" .
+
+# That's RDF!
+
+* all things identified by URIs
+* all data consists of triples
+    * subject (always an URI)^[or a blank node]
+    * property (always an URI)
+    * object (URI or character string)$^2$
+
+---
+
+# Ontologies
+
+set of common properties and rules
+
+* `foaf:name` (<http://xmlns.com/foaf/0.1/name>)
+* `dct:title` (<http://purl.org/dc/terms/title>)
+
+. . .
+
+more specialized ontologies exist
+
+* schema.org
+* RDA-ontology and BIBFRAME
+
+---
+
+\takastack{end of technical break.\\wake up!}
+
+---
+
+# Lesson learned
+
+* RDF data consists of triples
+
+. . .
+
+* subjects, properties, and most objects\
+  identified by URIs
+
+. . .
+
+* common properties from ontologies
+
+. . .
+
+*$\Longrightarrow$ easy to mix and merge!*
+
+---
+
+\takastack{summary of the present\\linked open data}
+
+---
+
+# Linked Open Data
+
+1. **Data**\
+   with URIs, in RDF
+
+. . .
+
+2. **Open**\
+   accesible via HTTP-URIs
+
+. . .
+
+3. **Linked**\
+   contains other HTTP-URIs
+
+---
+
+![Kippis!](lod-mug.jpg)
+
+---
+
+![](5stars.png)
+
+\takastack{
+    Linked RDF\\\onslide<2>
+    contains \emph{other} HTTP-URIs
+}
+
+---
+
+![](lod-cloud.png)
+
+---
+
+\taka{Future \onslide<2> of cataloging}
+
+---
+
+\taka{cataloging?}
+
+---
+
+\takastack{
+    intellectual creation of data\\\onslide<2>
+    about existing works
+}
+
+---
+
+# creation of data about existing works
+
+1. digitization
+
+. . .
+
+2. connections
+
+
+# digitization
+
+![](minnesang.png)
+
+. . .
+
+*required only once per work*
+
+# creation of data about existing works
+
+1. digitization
+
+2. connections
+
+. . .
+
+*infinite combination of connections*
+
+# connections that work
+
+* selection from already existing URIs
+* with appropriate tools
+
+![](suggest_wikipedia_en.png)
+
+# benefits
+
+* common data format
+* accessibility of data
+* flexible aggregation and subsets
+* collaborative creation
+
+# disadvantages
+
+* not all data can be expressed in RDF the same way\
+  (e.g. hierarchies and order is difficult)
+* data mdeling is complicated\
+  because the things are complicated
+
+---
+
+\taka{where to start?}
 
 ---
 
@@ -235,11 +468,17 @@ The MARC pilot project (1968)
 
 ---
 
-\taka{Future}
+\taka{summary}
 
 ---
 
-cataloging
+\takastack{
+    everything can be connected
+    \onslide<2> with URIs
+    \onslide<3> as soon as you connect it!
+}
+
+---
 
 # Conferences
 
@@ -271,6 +510,9 @@ LODLAM
 
 ---
 
-```
-catmandu convert RDF --url http://viaf.org/viaf/18236820.rdf to YAML
-catmandu convert RDF --url http://www.wikidata.org/entity/Q10953 to YAML
+\taka{thanks!}
+
+---
+
+\taka{questions!}
+
