@@ -88,6 +88,8 @@ good...
 * encoding of bibliographic information as data
 * controlled collaboration
 
+. . .
+
 ...but...
 
 * primary use case: printed cards
@@ -112,6 +114,8 @@ good...
 * worldwide connections
 * uncontrolled collaboration
 
+. . .
+
 ...but...
 
 * only for browsing interfaces
@@ -130,6 +134,8 @@ good...
 
 * data integration and analysis
 * semi-controlled collaboration
+
+. . .
 
 ...but...
 
@@ -156,7 +162,11 @@ sounds nice...
 * worldwide connections
 * data integration and analysis
 
-*...but how does it actually work?*
+. . .
+
+...but...
+
+* *how does it actually work?!*
 
 ---
 
@@ -170,7 +180,7 @@ sounds nice...
 
 . . .
 
-* some data refer to the same thing
+* some data refer to the "same" thing
 
 . . .
 
@@ -179,6 +189,15 @@ sounds nice...
     * in a university research management system
     * Wikipedia article about the person
     * ...
+
+# Data
+
+* all data refers to something
+
+* some data refer to the "same" thing
+
+* Linked Data makes true sense only with 
+  *data from multiple sources about the same thing*
 
 # "Old School" Library Linked Data
 
@@ -238,6 +257,8 @@ unique identification of things
 
 # Ei kaksi kolmannetta
 
+. . .
+
 * **subject:**\
   <http://d-nb.info/940697734>\
   ("a specific book with paintings")
@@ -280,7 +301,7 @@ unique identification of things
 
 . . .
 
-*RDF syntax converters exist.*
+*RDF syntax converters exist!*
 
 . . .
 
@@ -304,15 +325,18 @@ unique identification of things
 
 # That's RDF!
 
-* all things identified by URIs
-* all data consists of triples
-    * subject (always an URI)^[or a blank node]
-    * property (always an URI)
-    * object (URI or character string)$^2$
+* all things identified by URIs^[or a blank node]
 
----
+. . .
+
+* all data consists of triples
+    * subject (always an URI)$^1$
+    * property (always an URI)
+    * object (URI or character string)$^1$
 
 # Ontologies
+
+. . .
 
 set of common properties and rules
 
@@ -325,6 +349,11 @@ more specialized ontologies exist
 
 * schema.org
 * RDA-ontology and BIBFRAME
+* ...
+
+. . .
+
+ontologies can be mapped and merged
 
 ---
 
@@ -404,16 +433,12 @@ more specialized ontologies exist
 
 ---
 
-# creation of data about existing works
+# Creation of data about existing works
 
 1. digitization
 
-. . .
 
-2. connections
-
-
-# digitization
+# Digitization
 
 ![](minnesang.png)
 
@@ -425,32 +450,51 @@ more specialized ontologies exist
 
 1. digitization
 
+. . .
+
 2. connections
 
 . . .
 
 *infinite combination of connections*
 
-# connections that work
+# Connections that work
 
 * selection from already existing URIs
+
+. . .
+
 * with appropriate tools
 
 ![](suggest_wikipedia_en.png)
 
-# benefits
+---
+
+\taka{why Linked Open Data?}
+
+# Benefits
 
 * common data format
 * accessibility of data
 * flexible aggregation and subsets
 * collaborative creation
 
-# disadvantages
+# Disadvantages
 
-* not all data can be expressed in RDF the same way\
-  (e.g. hierarchies and order is difficult)
-* data mdeling is complicated\
-  because the things are complicated
+* some data is more difficult to express in RDF\
+  (e.g. hierarchies and order)
+
+. . .
+
+* data modeling is complicated
+
+. . .
+
+* reality is complicated
+
+. . .
+
+* collaboration can be complicated
 
 ---
 
@@ -474,7 +518,7 @@ more specialized ontologies exist
 
 \takastack{
     everything can be connected
-    \onslide<2> with URIs
+    \onslide<2> with URIs\\
     \onslide<3> as soon as you connect it!
 }
 
@@ -489,6 +533,9 @@ SWIB
 LODLAM
   : Linked Open Data in Libraries, Archives, and Museums (since 2011)\
     <http://lodlam.net>
+
+SEMANTiCS
+  : <http://www.semantics.cc>
 
 # Image sources
 
